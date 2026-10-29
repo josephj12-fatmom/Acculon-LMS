@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acculon LMS - Learning Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <img src="https://raw.githubusercontent.com/josephj12-fatmom/icons/main/Untitled%20design.png" alt="Acculon Icon" class="brand-icon">
+            <span class="brand-title">Acculon LMS</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active" onclick="switchTab('courses')"><i class="fa-solid fa-book-open"></i> Courses</a>
+            <a href="#" onclick="switchTab('gradebook')"><i class="fa-solid fa-book"></i> Gradebook</a>
+            <a href="#" onclick="switchTab('attention')"><i class="fa-solid fa-chart-line"></i> Attention Assessment</a>
+            <a href="#" onclick="switchTab('calendar')"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+        </nav>
+        <div class="nav-user">
+            <span class="user-role">Teacher Portal</span>
+            <i class="fa-solid fa-circle-user fa-lg"></i>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- COURSES TAB -->
+        <section id="courses-tab" class="tab-content active">
+            <div class="section-header">
+                <h2>My Courses</h2>
+                <button class="btn-primary" onclick="alert('Course creation modal opened!')"><i class="fa-solid fa-plus"></i> Add Course</button>
+            </div>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-header" style="background: linear-gradient(135deg, #2c3e50, #3498db);">
+                        <h3>AP Physics Period 3</h3>
+                        <span>Room 204</span>
+                    </div>
+                    <div class="course-body">
+                        <p><strong>Recent Update:</strong> Don't forget lab reports are due this Friday!</p>
+                        <ul class="folder-list">
+                            <li><i class="fa-solid fa-folder"></i> Unit 1: Kinematics & Vectors</li>
+                            <li><i class="fa-solid fa-folder"></i> Unit 2: Newton's Laws</li>
+                            <li><i class="fa-solid fa-file-lines"></i> Syllabus_2026.pdf</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+                        <h3>AP Calculus BC</h3>
+                        <span>Room 112</span>
+                    </div>
+                    <div class="course-body">
+                        <p><strong>Recent Update:</strong> Quiz corrections due by Tuesday afternoon.</p>
+                        <ul class="folder-list">
+                            <li><i class="fa-solid fa-folder"></i> Unit 4: Integration Techniques</li>
+                            <li><i class="fa-solid fa-file-lines"></i> Formula_Sheet.pdf</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRADEBOOK TAB -->
+        <section id="gradebook-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Acculon Gradebook - AP Physics P3</h2>
+                <button class="btn-primary" onclick="saveGrades()"><i class="fa-solid fa-floppy-disk"></i> Save Grades</button>
+            </div>
+            <div class="table-responsive">
+                <table class="gradebook-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Kinematics Quiz</th>
+                            <th>Lab Report 1</th>
+                            <th>Midterm Exam</th>
+                            <th>Overall Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradebook-body">
+                        <!-- Populated by script.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ATTENTION ASSESSMENT TAB -->
+        <section id="attention-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Attention Assessment Suite (Performance Matters Alternative)</h2>
+                <button class="btn-primary" onclick="runDiagnostic()"><i class="fa-solid fa-bolt"></i> Run Diagnostic Sync</button>
+            </div>
+            <div class="attention-metrics">
+                <div class="metric-card">
+                    <i class="fa-solid fa-users-viewfinder fa-2x"></i>
+                    <h3>Class Engagement Index</h3>
+                    <p class="metric-value">91.4%</p>
+                    <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +4.2% this week</span>
+                </div>
+                <div class="metric-card">
+                    <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+                    <h3>Intervention Flagged</h3>
+                    <p class="metric-value">3 Students</p>
+                    <span class="trend-down">Needs Review</span>
+                </div>
+                <div class="metric-card">
+                    <i class="fa-solid fa-bullseye fa-2x"></i>
+                    <h3>Standard Mastery Rate</h3>
+                    <p class="metric-value">84.8%</p>
+                    <span class="trend-up">Target: 80%</span>
+                </div>
+            </div>
+            <div class="diagnostic-breakdown">
+                <h3>Standard Performance Breakdown</h3>
+                <div id="standards-list">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CALENDAR TAB -->
+        <section id="calendar-tab" class="tab-content">
+            <h2>LMS Calendar & Deadlines</h2>
+            <p>Upcoming scheduled assignments, quizzes, and diagnostic assessments for October 2026.</p>
+            <ul class="calendar-list">
+                <li><strong>Oct 30:</strong> AP Physics Lab Report #1 Due</li>
+                <li><strong>Nov 2:</strong> Attention Assessment Benchmark #2</li>
+                <li><strong>Nov 5:</strong> Calculus Integration Quiz</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
